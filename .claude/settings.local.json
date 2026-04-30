@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:poly.pizza)",
+      "Bash(curl -sL \"https://poly.pizza/search/Smartphone\" -A \"Mozilla/5.0\")",
+      "Bash(curl -sL \"https://poly.pizza/api/v1.1/search/smartphone\" -A \"Mozilla/5.0\")",
+      "Bash(curl -sLI \"https://poly.pizza/\" -A \"Mozilla/5.0\")",
+      "Bash(curl -v -sL \"https://poly.pizza/\" -A \"Mozilla/5.0\")",
+      "Bash(curl -skL \"https://poly.pizza/search/smartphone\" -A \"Mozilla/5.0\")",
+      "Bash(curl -skL \"https://poly.pizza/search/smartphone\" -A \"Mozilla/5.0\" -o /tmp/poly.html)",
+      "Read(//tmp/**)",
+      "Bash(grep -oE '/m/[A-Za-z0-9_-]+|\"title\":\"[^\"]{1,40}\"|smartphone[^\"]{0,30}' /tmp/poly.html)",
+      "Bash(curl -skLI \"https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/README.md\")",
+      "WebSearch",
+      "Bash(curl -skL \"https://raw.githubusercontent.com/pizza3/asset/master/README.md\")",
+      "Bash(curl -skL \"https://raw.githubusercontent.com/pizza3/asset/master/LICENSE\")",
+      "Bash(curl -skLI \"https://raw.githubusercontent.com/pizza3/asset/master/iphone.glb\")",
+      "Bash(curl -skL \"https://raw.githubusercontent.com/pizza3/asset/master/iphone.glb\" -o d:/kshit/KshitDemosLearning/radiation/public/models/phone.glb)",
+      "Bash(xxd)",
+      "Bash(curl -skLI \"https://raw.githubusercontent.com/pmndrs/drei-assets/456060a26bbeb8fdf79326f224b6d99b8bcce736/hdri/city.hdr\")"
+    ]
+  }
+}
