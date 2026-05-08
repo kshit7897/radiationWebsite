@@ -16,7 +16,7 @@ const POSITIONS = [
   { at: 4.35, value: [-1.23, 0, 0.03] },
   { at: 5.35, value: [1.17, 0, 0.03] },
   { at: 6.35, value: [-1.05, 0.05, 0.02] },
-  { at: 7, value: [0, 0.36, 0.02] },
+  { at: 7, value: [1.95, 0.06, 0.0] },
 ] as const;
 
 const SCALES = [
@@ -25,7 +25,7 @@ const SCALES = [
   { at: 4.35, value: 0.68 },
   { at: 5.35, value: 0.68 },
   { at: 6.35, value: 0.74 },
-  { at: 7, value: 0.58 },
+  { at: 7, value: 0.62 },
 ] as const;
 
 export default function Case() {

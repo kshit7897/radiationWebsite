@@ -18,7 +18,7 @@ const POSITIONS = [
   { at: 4.25, value: [-1.23, 0, 0.04] },
   { at: 5.35, value: [1.17, 0, 0.04] },
   { at: 6.35, value: [-1.05, 0.05, 0.02] },
-  { at: 7, value: [0, 0.36, -0.08] },
+  { at: 7, value: [1.95, 0.06, -0.05] },
 ] as const;
 
 const ROTATIONS = [
@@ -29,7 +29,7 @@ const ROTATIONS = [
   { at: 4.25, value: [0, -0.16, 0] },
   { at: 5.35, value: [0, -0.28, 0] },
   { at: 6.35, value: [-0.02, 0.24, 0] },
-  { at: 7, value: [-0.04, -0.18, 0] },
+  { at: 7, value: [-0.02, -0.42, 0] },
 ] as const;
 
 const SCALES = [
@@ -40,7 +40,7 @@ const SCALES = [
   { at: 4.25, value: 0.6 },
   { at: 5.35, value: 0.6 },
   { at: 6.35, value: 0.64 },
-  { at: 7, value: 0.58 },
+  { at: 7, value: 0.62 },
 ] as const;
 
 export default function Phone() {
@@ -70,7 +70,12 @@ export default function Phone() {
 
   return (
     <group ref={root}>
-      <ModelAsset url={PHONE_URL} fit={2.45} variant="phone" />
+      <ModelAsset
+        url={PHONE_URL}
+        fit={2.45}
+        variant="phone"
+        rotation={[0, 0, 0]}
+      />
     </group>
   );
 }

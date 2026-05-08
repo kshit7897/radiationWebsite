@@ -14,9 +14,11 @@ import {
 import * as THREE from "three";
 import Arrows from "./Arrows";
 import Case from "./Case";
+import HeroShield from "./HeroShield";
 import Human from "./Human";
 import Phone from "./Phone";
 import RadiationField from "./RadiationField";
+import SpecCallouts from "./SpecCallouts";
 import StoryPanels from "./StoryPanels";
 import { segment } from "./timeline";
 
@@ -25,6 +27,7 @@ const PAGES = 8;
 function StoryCamera() {
   const camera = useRef<THREE.PerspectiveCamera>(null);
   const scroll = useScroll();
+  const parallax = useRef({ x: 0, y: 0 });
 
   useFrame((state) => {
     if (!camera.current) return;
@@ -34,9 +37,15 @@ function StoryCamera() {
     const productFocus = segment(story, 2.7, 4.9);
     const calmEnd = segment(story, 6.1, 7);
 
+    parallax.current.x += (state.pointer.x * 0.18 - parallax.current.x) * 0.04;
+    parallax.current.y += (state.pointer.y * 0.1 - parallax.current.y) * 0.04;
+
     camera.current.position.x =
-      sideFocus * (1 - calmEnd) + Math.sin(state.clock.elapsedTime * 0.18) * 0.025;
-    camera.current.position.y = 0.04 + productFocus * 0.05 + calmEnd * 0.08;
+      sideFocus * (1 - calmEnd) +
+      Math.sin(state.clock.elapsedTime * 0.18) * 0.025 +
+      parallax.current.x;
+    camera.current.position.y =
+      0.04 + productFocus * 0.05 + calmEnd * 0.08 + parallax.current.y;
     camera.current.position.z = 8.35 - productFocus * 0.45 + calmEnd * 0.35;
     camera.current.lookAt(0, 0.03, 0);
   });
@@ -159,8 +168,10 @@ function StoryWorld() {
       <Phone />
       <Human />
       <Case />
+      <HeroShield />
       <RadiationField />
       <Arrows />
+      <SpecCallouts />
       <ContactShadows
         position={[0, -1.54, 0]}
         opacity={0.25}

@@ -230,6 +230,134 @@ body {
   );
 }
 
+/* Shield-frame: glass card mirroring the case structure — translucent so 3D shows through */
+.shield-frame {
+  position: relative;
+  border-radius: 24px;
+  padding: 4px;
+  background: linear-gradient(
+    155deg,
+    rgba(10, 22, 32, 0.55) 0%,
+    rgba(18, 39, 52, 0.5) 60%,
+    rgba(8, 67, 75, 0.55) 100%
+  );
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  box-shadow:
+    0 40px 100px rgba(8, 67, 75, 0.24),
+    0 16px 40px rgba(10, 22, 32, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  isolation: isolate;
+}
+
+.shield-frame::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 30px;
+  background: conic-gradient(
+    from 120deg,
+    rgba(31, 162, 176, 0.5),
+    rgba(127, 169, 139, 0.3),
+    rgba(15, 110, 122, 0.5),
+    rgba(31, 162, 176, 0.5)
+  );
+  filter: blur(22px);
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.shield-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    transparent 40%,
+    rgba(31, 162, 176, 0.08) 100%
+  );
+  pointer-events: none;
+}
+
+.shield-inner {
+  position: relative;
+  border-radius: 20px;
+  padding: 28px 30px 24px;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(31, 162, 176, 0.18) 0%,
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(15, 110, 122, 0.62) 0%,
+      rgba(8, 67, 75, 0.6) 100%
+    );
+  overflow: hidden;
+  /* Invert text colors inside the shield */
+  --foreground: #ffffff;
+  --foreground-soft: rgba(232, 246, 248, 0.88);
+  --ink-500: rgba(216, 234, 237, 0.62);
+  --ink-700: rgba(232, 246, 248, 0.88);
+  --accent-deep: #d3f0f3;
+  --accent-soft: #b9d8c5;
+  --hairline: rgba(255, 255, 255, 0.16);
+}
+
+.shield-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(31, 162, 176, 0.55),
+    transparent
+  );
+}
+
+.shield-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: rgba(31, 162, 176, 0.55);
+}
+.shield-corner-tl {
+  top: 10px;
+  left: 10px;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-top-left-radius: 6px;
+}
+.shield-corner-tr {
+  top: 10px;
+  right: 10px;
+  border-top: 1px solid;
+  border-right: 1px solid;
+  border-top-right-radius: 6px;
+}
+.shield-corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-bottom-left-radius: 6px;
+}
+.shield-corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  border-bottom-right-radius: 6px;
+}
+
 .chapter-dot {
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     background-color 0.7s ease, box-shadow 0.7s ease;

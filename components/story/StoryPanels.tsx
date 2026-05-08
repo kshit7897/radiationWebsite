@@ -27,6 +27,7 @@ type PanelProps = {
   body: string;
   side?: "left" | "right" | "center";
   interactive?: boolean;
+  framed?: boolean;
   children?: React.ReactNode;
 };
 
@@ -45,6 +46,7 @@ function Panel({
   body,
   side = "left",
   interactive = false,
+  framed = false,
   children,
 }: PanelProps) {
   const root = useRef<HTMLDivElement>(null);
@@ -109,6 +111,88 @@ function Panel({
         ? "left-1/2 -translate-x-1/2"
         : "left-0";
 
+  const inner = (
+    <>
+      {!framed && (
+        <span
+          ref={ruleRef}
+          aria-hidden
+          className={`absolute top-0 ${ruleSide} h-full w-px origin-top bg-gradient-to-b from-transparent via-[var(--accent)]/45 to-transparent`}
+          style={{ transform: "scaleY(0)" }}
+        />
+      )}
+
+      <div
+        ref={kickerRef}
+        className={`kicker flex items-center gap-3 text-[10.5px] font-medium uppercase ${
+          framed
+            ? "justify-center text-[color:var(--accent-soft)]"
+            : "text-[color:var(--accent-deep)]"
+        }`}
+        style={{ opacity: 0 }}
+      >
+        <span
+          className={`font-mono ${
+            framed
+              ? "text-[color:var(--accent-soft)]"
+              : "text-[color:var(--accent-soft)]"
+          }`}
+        >
+          {index}
+        </span>
+        <span
+          className={`h-px w-6 ${
+            framed ? "bg-white/30" : "bg-[var(--accent-deep)]/45"
+          }`}
+        />
+        <span>{kicker}</span>
+      </div>
+
+      <h2
+        className={`headline font-semibold text-[color:var(--foreground)] ${
+          framed
+            ? "text-[clamp(1.5rem,2.6vw,2.2rem)]"
+            : "text-[clamp(2.1rem,4.6vw,4.6rem)]"
+        }`}
+      >
+        {titleWords.map((segment, i) => {
+          if (/^\s+$/.test(segment)) return <span key={i}> </span>;
+          return (
+            <span
+              key={i}
+              ref={(el) => {
+                if (el) wordRefs.current[Math.floor(i / 2)] = el;
+              }}
+              className="word-reveal"
+            >
+              {segment}
+            </span>
+          );
+        })}
+      </h2>
+
+      <p
+        className={`leading-[1.55] text-[color:var(--foreground-soft)] ${
+          framed ? "max-w-[280px] text-[13px]" : "max-w-[36rem] text-[15px] sm:text-base"
+        }`}
+      >
+        {bodyParts.map((line, i) => (
+          <span
+            key={i}
+            ref={(el) => {
+              if (el) lineRefs.current[i] = el;
+            }}
+            className="line-reveal"
+          >
+            {line}
+          </span>
+        ))}
+      </p>
+
+      {children}
+    </>
+  );
+
   return (
     <section
       className="relative flex h-screen w-full flex-col justify-center px-5 py-20 sm:px-10 lg:px-[7vw]"
@@ -116,60 +200,24 @@ function Panel({
     >
       <div
         ref={root}
-        className={`relative flex w-full max-w-[480px] flex-col gap-5 ${align}`}
+        className={`relative flex w-full flex-col gap-5 ${align} ${
+          framed ? "max-w-[360px]" : "max-w-[480px]"
+        }`}
         style={{ opacity: 0, transform: "translateY(18px)" }}
       >
-        <span
-          ref={ruleRef}
-          aria-hidden
-          className={`absolute top-0 ${ruleSide} h-full w-px origin-top bg-gradient-to-b from-transparent via-[var(--accent)]/45 to-transparent`}
-          style={{ transform: "scaleY(0)" }}
-        />
-
-        <div
-          ref={kickerRef}
-          className="kicker flex items-center gap-3 text-[10.5px] font-medium uppercase text-[color:var(--accent-deep)]"
-          style={{ opacity: 0 }}
-        >
-          <span className="font-mono text-[color:var(--accent-soft)]">
-            {index}
-          </span>
-          <span className="h-px w-6 bg-[var(--accent-deep)]/45" />
-          <span>{kicker}</span>
-        </div>
-
-        <h2 className="headline text-[clamp(2.1rem,4.6vw,4.6rem)] font-semibold text-[color:var(--foreground)]">
-          {titleWords.map((segment, i) => {
-            if (/^\s+$/.test(segment)) return <span key={i}> </span>;
-            return (
-              <span
-                key={i}
-                ref={(el) => {
-                  if (el) wordRefs.current[Math.floor(i / 2)] = el;
-                }}
-                className="word-reveal"
-              >
-                {segment}
-              </span>
-            );
-          })}
-        </h2>
-
-        <p className="max-w-[36rem] text-[15px] leading-[1.65] text-[color:var(--foreground-soft)] sm:text-base">
-          {bodyParts.map((line, i) => (
-            <span
-              key={i}
-              ref={(el) => {
-                if (el) lineRefs.current[i] = el;
-              }}
-              className="line-reveal"
-            >
-              {line}
-            </span>
-          ))}
-        </p>
-
-        {children}
+        {framed ? (
+          <div className="shield-frame w-full">
+            <div className="shield-inner flex flex-col items-center gap-3 text-center">
+              <span aria-hidden className="shield-corner shield-corner-tl" />
+              <span aria-hidden className="shield-corner shield-corner-tr" />
+              <span aria-hidden className="shield-corner shield-corner-bl" />
+              <span aria-hidden className="shield-corner shield-corner-br" />
+              {inner}
+            </div>
+          </div>
+        ) : (
+          inner
+        )}
       </div>
     </section>
   );
@@ -432,14 +480,15 @@ export default function StoryPanels() {
         body="A premium case built around the side that actually faces you."
         side="center"
         interactive
+        framed
       >
         <motion.a
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
           href="mailto:hello@aegisshield.com?subject=Get%20Your%20Shield"
-          className="cta-glow group mt-10 inline-flex h-[52px] items-center justify-center gap-3 rounded-full bg-[color:var(--foreground)] px-8 text-sm font-medium tracking-[0.02em] text-white shadow-[0_18px_50px_rgba(14,42,54,0.22)] focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)]/40"
+          className="cta-glow group mt-6 inline-flex h-[50px] items-center justify-center gap-3 rounded-full bg-white px-7 text-sm font-medium tracking-[0.02em] text-[color:#0a1620] shadow-[0_18px_50px_rgba(0,0,0,0.32)] focus:outline-none focus:ring-2 focus:ring-white/50"
         >
           <span>Get Your Shield</span>
           <span className="inline-block transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1">
@@ -450,8 +499,8 @@ export default function StoryPanels() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false, amount: 0.6 }}
-          transition={{ duration: 0.9, delay: 0.45 }}
-          className="kicker mt-6 text-[10px] uppercase text-[color:var(--muted)]"
+          transition={{ duration: 0.9, delay: 0.5 }}
+          className="kicker mt-2 text-[9.5px] uppercase tracking-[0.32em] text-white/60"
         >
           Ships globally · 30-day returns
         </motion.span>

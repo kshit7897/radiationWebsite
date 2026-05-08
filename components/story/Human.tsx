@@ -16,7 +16,7 @@ const POSITIONS = [
   { at: 4.25, value: [-1.55, -1.42, -0.4] },
   { at: 5.35, value: [-1.5, -1.42, -0.35] },
   { at: 6.4, value: [-1.42, -1.42, -0.3] },
-  { at: 7, value: [-1.42, -1.42, -0.3] },
+  { at: 7, value: [-1.95, -1.42, -0.2] },
 ] as const;
 
 const ROTATIONS = [
@@ -100,8 +100,9 @@ export default function Human() {
 
     const problem = fadeBetween(story, 0.72, 1.08, 2.04, 2.36);
     const how = fadeBetween(story, 3.82, 4.16, 5.12, 5.42);
-    const calm = fadeBetween(story, 5.78, 6.18, 6.85, 7.05);
-    const presence = Math.max(problem, how * 0.85, calm * 0.5);
+    const calm = fadeBetween(story, 5.78, 6.18, 7.05, 7.1);
+    const action = fadeBetween(story, 6.6, 6.95, 7.05, 7.1);
+    const presence = Math.max(problem, how * 0.85, calm * 0.55, action * 0.7);
 
     const heat =
       segment(story, 0.92, 1.25) * (1 - segment(story, 1.78, 2.18));
