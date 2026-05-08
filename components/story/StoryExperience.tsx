@@ -16,7 +16,6 @@ import Case from "./Case";
 import Human from "./Human";
 import Phone from "./Phone";
 import RadiationField from "./RadiationField";
-import StoryLabels from "./StoryLabels";
 import StoryPanels from "./StoryPanels";
 import { segment } from "./timeline";
 
@@ -160,7 +159,6 @@ function StoryWorld() {
       <Case />
       <RadiationField />
       <Arrows />
-      <StoryLabels />
       <ContactShadows
         position={[0, -1.54, 0]}
         opacity={0.16}
