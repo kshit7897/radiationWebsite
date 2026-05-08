@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aegis — Anti-Radiation Phone Cases",
+  title: "Directional Radiation Protection Phone Case",
   description:
-    "Premium anti-radiation phone cases engineered to reduce body-side RF exposure without compromising signal.",
+    "A premium 3D story for a directional shielding phone case that blocks body-side radiation while keeping signal strong.",
 };
 
 export default function RootLayout({
