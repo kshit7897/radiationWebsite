@@ -48,10 +48,10 @@ function tuneMaterial(
     }
 
     if (variant === "human") {
-      material.color.set("#278a9a");
-      material.emissive.set("#d9f4f7");
-      material.emissiveIntensity = 0.18;
-      material.roughness = 0.82;
+      material.color.set("#2d4150");
+      material.emissive.set("#1fa2b0");
+      material.emissiveIntensity = 0.22;
+      material.roughness = 0.78;
       material.metalness = 0.05;
       material.wireframe = true;
       material.transparent = true;
@@ -62,18 +62,18 @@ function tuneMaterial(
 
     if (variant === "case") {
       const isInner = materialIndex > 0 || material.name.toLowerCase().includes("1");
-      material.color.set(isInner ? "#27a5b8" : "#152f3b");
-      material.emissive.set(isInner ? "#c9f8ef" : "#e4f2f5");
-      material.emissiveIntensity = isInner ? 0.18 : 0.04;
-      material.roughness = isInner ? 0.36 : 0.28;
-      material.metalness = isInner ? 0.48 : 0.78;
+      material.color.set(isInner ? "#0f6e7a" : "#0a1620");
+      material.emissive.set(isInner ? "#1fa2b0" : "#33454f");
+      material.emissiveIntensity = isInner ? 0.22 : 0.04;
+      material.roughness = isInner ? 0.32 : 0.26;
+      material.metalness = isInner ? 0.5 : 0.78;
     }
 
     if (variant === "arrow") {
-      material.color.set(tint ?? "#7de7ff");
-      material.emissive.set(tint ?? "#7de7ff");
-      material.emissiveIntensity = 0.9;
-      material.roughness = 0.34;
+      material.color.set(tint ?? "#1fa2b0");
+      material.emissive.set(tint ?? "#1fa2b0");
+      material.emissiveIntensity = 0.95;
+      material.roughness = 0.32;
       material.metalness = 0.25;
       material.transparent = true;
       material.opacity = opacity;

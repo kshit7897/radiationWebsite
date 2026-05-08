@@ -251,7 +251,7 @@ function PulseRings() {
         >
           <torusGeometry args={[1, 0.006, 10, 96]} />
           <meshBasicMaterial
-            color="#238a9a"
+            color="#0f6e7a"
             transparent
             opacity={0}
             blending={THREE.NormalBlending}
@@ -290,7 +290,7 @@ function ShieldSheet() {
       <boxGeometry args={[0.035, 2.55, 1.05]} />
       <meshBasicMaterial
         ref={material}
-        color="#27a5b8"
+        color="#1fa2b0"
         transparent
         opacity={0}
         blending={THREE.NormalBlending}
@@ -308,7 +308,7 @@ export default function RadiationField() {
       <ShieldSheet />
 
       <FlowPath
-        color="#d85262"
+        color="#c9645b"
         points={[
           [-1.18, -0.45, 0.18],
           [-1.38, -0.38, 0.42],
@@ -319,7 +319,7 @@ export default function RadiationField() {
       />
 
       <FlowPath
-        color="#d85262"
+        color="#c9645b"
         points={[
           [-1.08, 0.02, 0.18],
           [-1.34, 0.02, 0.36],
@@ -330,7 +330,7 @@ export default function RadiationField() {
       />
 
       <FlowPath
-        color="#51b887"
+        color="#7fa98b"
         points={[
           [-1.02, -0.12, 0.1],
           [-0.72, -0.04, 0.34],
@@ -341,7 +341,7 @@ export default function RadiationField() {
       />
 
       <ParticleBeam
-        color="#d85262"
+        color="#c9645b"
         length={1.05}
         spread={0.28}
         pointSize={6.8}
@@ -350,14 +350,14 @@ export default function RadiationField() {
       />
 
       <ParticleBeam
-        color="#238a9a"
+        color="#0f6e7a"
         length={1.25}
         spread={0.26}
         position={[1.2, 0.02, 0.12]}
         opacity={(story) => fadeBetween(story, 1.92, 2.32, 3.05, 3.32) * 0.22}
       />
       <ParticleBeam
-        color="#238a9a"
+        color="#0f6e7a"
         length={1.2}
         spread={0.24}
         position={[1.2, 0.02, 0.12]}
@@ -365,7 +365,7 @@ export default function RadiationField() {
         opacity={(story) => fadeBetween(story, 1.95, 2.35, 3.08, 3.34) * 0.16}
       />
       <ParticleBeam
-        color="#d85262"
+        color="#c9645b"
         length={1.02}
         spread={0.2}
         position={[-1.48, 0.02, 0.15]}
@@ -374,14 +374,14 @@ export default function RadiationField() {
         opacity={(story) => fadeBetween(story, 3.92, 4.18, 5.0, 5.32) * 0.14}
       />
       <ParticleBeam
-        color="#51b887"
+        color="#7fa98b"
         length={1.18}
         spread={0.22}
         position={[-0.86, 0.02, 0.1]}
         opacity={(story) => fadeBetween(story, 4.02, 4.25, 5.08, 5.34) * 0.12}
       />
       <ParticleBeam
-        color="#238a9a"
+        color="#0f6e7a"
         length={0.92}
         spread={0.16}
         pointSize={5.8}

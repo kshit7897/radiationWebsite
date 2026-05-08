@@ -105,14 +105,14 @@ export default function Arrows() {
 
   return (
     <group>
-      <ArrowModel refObject={insightTop} color="#238a9a" />
-      <ArrowModel refObject={insightBottom} color="#238a9a" />
-      <ArrowModel refObject={insightRight} color="#238a9a" />
-      <ArrowModel refObject={insightLeft} color="#238a9a" />
-      <ArrowModel refObject={bodyPrimary} color="#d85262" />
-      <ArrowModel refObject={bodySecondary} color="#d85262" />
-      <ArrowModel refObject={signalPrimary} color="#51b887" />
-      <ArrowModel refObject={signalSecondary} color="#51b887" />
+      <ArrowModel refObject={insightTop} color="#0f6e7a" />
+      <ArrowModel refObject={insightBottom} color="#0f6e7a" />
+      <ArrowModel refObject={insightRight} color="#0f6e7a" />
+      <ArrowModel refObject={insightLeft} color="#0f6e7a" />
+      <ArrowModel refObject={bodyPrimary} color="#c9645b" />
+      <ArrowModel refObject={bodySecondary} color="#c9645b" />
+      <ArrowModel refObject={signalPrimary} color="#7fa98b" />
+      <ArrowModel refObject={signalSecondary} color="#7fa98b" />
     </group>
   );
 }

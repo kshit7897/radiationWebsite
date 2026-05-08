@@ -47,9 +47,9 @@ function Atmosphere() {
   const scroll = useScroll();
   const background = useRef<THREE.Color>(null);
   const fog = useRef<THREE.Fog>(null);
-  const base = useMemo(() => new THREE.Color("#f6fbfc"), []);
-  const cool = useMemo(() => new THREE.Color("#eef8fb"), []);
-  const calm = useMemo(() => new THREE.Color("#f2fbf6"), []);
+  const base = useMemo(() => new THREE.Color("#f0f3f5"), []);
+  const cool = useMemo(() => new THREE.Color("#e6edef"), []);
+  const calm = useMemo(() => new THREE.Color("#edf2ef"), []);
   const final = useMemo(() => new THREE.Color("#ffffff"), []);
   const working = useMemo(() => new THREE.Color(), []);
 
@@ -72,8 +72,8 @@ function Atmosphere() {
 
   return (
     <>
-      <color ref={background} attach="background" args={["#f6fbfc"]} />
-      <fog ref={fog} attach="fog" args={["#f6fbfc", 9, 24]} />
+      <color ref={background} attach="background" args={["#f0f3f5"]} />
+      <fog ref={fog} attach="fog" args={["#f0f3f5", 9, 24]} />
     </>
   );
 }
@@ -99,8 +99,8 @@ function StoryLights() {
     <>
       <ambientLight ref={ambient} intensity={1.15} />
       <directionalLight ref={key} position={[4, 5.5, 6]} intensity={2.6} color="#ffffff" castShadow />
-      <directionalLight ref={fill} position={[-5, -1, 4]} intensity={1.35} color="#9ee9f2" />
-      <directionalLight ref={rim} position={[0, 2.8, -5]} intensity={0.8} color="#7bd6ad" />
+      <directionalLight ref={fill} position={[-5, -1, 4]} intensity={1.35} color="#c2dfe2" />
+      <directionalLight ref={rim} position={[0, 2.8, -5]} intensity={0.8} color="#b7cec0" />
       <pointLight position={[0, 0.6, 3]} intensity={0.3} color="#ffffff" />
     </>
   );
@@ -126,22 +126,22 @@ function StageSurface() {
       <mesh position={[0, -1.58, -0.35]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[7.4, 5.2]} />
         <meshStandardMaterial
-          color="#e8f3f5"
-          roughness={0.74}
+          color="#e5eaec"
+          roughness={0.78}
           metalness={0}
           transparent
-          opacity={0.78}
+          opacity={0.82}
         />
       </mesh>
 
       <mesh position={[0, -1.575, -0.35]} rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[1.15, 1.17, 120]} />
-        <meshBasicMaterial color="#9acfd8" transparent opacity={0.26} depthWrite={false} />
+        <meshBasicMaterial color="#0f6e7a" transparent opacity={0.22} depthWrite={false} />
       </mesh>
 
       <mesh position={[0, -1.57, -0.35]} rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[1.72, 1.735, 140]} />
-        <meshBasicMaterial color="#b9ded7" transparent opacity={0.18} depthWrite={false} />
+        <meshBasicMaterial color="#7fa98b" transparent opacity={0.16} depthWrite={false} />
       </mesh>
     </group>
   );

@@ -9,10 +9,14 @@ const StoryExperience = dynamic(() => import("./StoryExperience"), {
 
 function StoryFallback() {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[#f6fbfc] text-[#102d3a]">
-      <div className="flex flex-col items-center gap-5">
-        <div className="h-10 w-10 rounded-full border border-[#d4e8ed] border-t-[#27a5b8] animate-spin" />
-        <span className="text-[11px] uppercase tracking-[0.3em] text-[#55727d]">
+    <div className="fixed inset-0 flex items-center justify-center bg-background text-foreground">
+      <div className="flex flex-col items-center gap-6">
+        <div className="relative h-12 w-12">
+          <div className="absolute inset-0 rounded-full border border-[color:var(--accent)]/20" />
+          <div className="absolute inset-0 rounded-full border-t border-[color:var(--accent)] animate-spin" />
+          <div className="absolute inset-3 rounded-full bg-[color:var(--accent)]/15 blur-md" />
+        </div>
+        <span className="kicker text-[10.5px] uppercase text-[color:var(--muted)] animate-pulse">
           Preparing shield
         </span>
       </div>

@@ -65,11 +65,11 @@ export default function Human() {
         tuned.envMapIntensity = 0.9;
 
         if (mat instanceof THREE.MeshStandardMaterial) {
-          mat.color.set("#2c8a9b");
-          mat.emissive.set("#cbeef3");
-          mat.emissiveIntensity = 0.18;
-          mat.roughness = 0.78;
-          mat.metalness = 0.05;
+          mat.color.set("#2d4150");
+          mat.emissive.set("#1fa2b0");
+          mat.emissiveIntensity = 0.22;
+          mat.roughness = 0.74;
+          mat.metalness = 0.06;
           mat.transparent = true;
           mat.opacity = 0;
           mat.depthWrite = false;
@@ -146,7 +146,7 @@ export default function Human() {
           <sphereGeometry args={[0.22, 28, 22]} />
           <meshBasicMaterial
             ref={heatMat}
-            color="#ff5f74"
+            color="#c9645b"
             transparent
             opacity={0}
             blending={THREE.AdditiveBlending}

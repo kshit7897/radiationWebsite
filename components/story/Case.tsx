@@ -79,20 +79,20 @@ export default function Case() {
         <RoundedBox args={[1.13, 2.38, 0.045]} radius={0.12} smoothness={10}>
           <meshStandardMaterial
             ref={shieldMaterial}
-            color="#27a5b8"
-            emissive="#d9fff3"
+            color="#0f6e7a"
+            emissive="#1fa2b0"
             emissiveIntensity={0}
             metalness={0.52}
-            roughness={0.34}
+            roughness={0.32}
             transparent
-            opacity={0.72}
+            opacity={0.74}
           />
         </RoundedBox>
         <mesh position={[0, 0, 0.028]}>
           <planeGeometry args={[1.02, 2.22]} />
           <meshBasicMaterial
             ref={edgeMaterial}
-            color="#27a5b8"
+            color="#1fa2b0"
             transparent
             opacity={0}
             blending={THREE.NormalBlending}
