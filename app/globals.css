@@ -4,23 +4,23 @@
   /* QUIET TECH — final palette */
 
   /* Surface */
-  --surface-0: #f0f3f5;       /* page background */
+  --surface-0: #f2f7f9;       /* soft icy cyan-grey background */
   --surface-1: #ffffff;       /* elevated card */
-  --surface-2: #e5eaec;       /* inset / stage */
+  --surface-2: #e6eff2;       /* inset / stage */
 
   /* Ink */
-  --ink-900: #0a1620;         /* headings, CTA bg */
-  --ink-700: #33454f;         /* body text */
-  --ink-500: #6b7c85;         /* muted, kicker */
+  --ink-900: #0a1f2e;         /* deep navy slate */
+  --ink-700: #2d4a5e;         /* body text */
+  --ink-500: #5c7e94;         /* muted, kicker */
 
-  /* Primary tech accent */
-  --accent: #0f6e7a;          /* deep teal — primary UI accent */
-  --accent-deep: #08434b;     /* abyss teal — heavy ink */
-  --accent-glow: #1fa2b0;     /* hot teal — radiation glow / tip */
+  /* Primary tech accent (Corporate Blue-Green) */
+  --accent: #0b5c70;          /* deep trust teal */
+  --accent-deep: #063d4a;     /* abyss teal */
+  --accent-glow: #12a8bd;     /* energetic cyan */
 
   /* Storytelling signals */
-  --accent-warm: #c9645b;     /* muted brick — body-side danger */
-  --accent-soft: #7fa98b;     /* sage — shielded / safety */
+  --accent-warm: #d65d50;     /* clinical coral / danger */
+  --accent-soft: #63a893;     /* clinical sage / safety */
 
   /* Aliases the rest of the system reads */
   --background: var(--surface-0);
@@ -28,9 +28,9 @@
   --foreground-soft: var(--ink-700);
   --muted: var(--ink-500);
 
-  --hairline: rgba(15, 110, 122, 0.18);
-  --hairline-strong: rgba(15, 110, 122, 0.32);
-  --glass: rgba(255, 255, 255, 0.62);
+  --hairline: rgba(11, 92, 112, 0.12);
+  --hairline-strong: rgba(11, 92, 112, 0.25);
+  --glass: rgba(255, 255, 255, 0.7);
 }
 
 @theme inline {
@@ -107,9 +107,9 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 30;
-  opacity: 0.05;
+  opacity: 0.04;
   mix-blend-mode: multiply;
-  background-image: radial-gradient(rgba(14, 42, 54, 0.6) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(10, 31, 46, 0.6) 1px, transparent 1px);
   background-size: 3px 3px;
 }
 
@@ -121,13 +121,13 @@ body {
   background:
     radial-gradient(
       ellipse at 50% 0%,
-      rgba(246, 251, 252, 0) 55%,
-      rgba(246, 251, 252, 0.85) 100%
+      rgba(242, 247, 249, 0) 55%,
+      rgba(242, 247, 249, 0.85) 100%
     ),
     radial-gradient(
       ellipse at 50% 100%,
-      rgba(246, 251, 252, 0) 55%,
-      rgba(246, 251, 252, 0.7) 100%
+      rgba(242, 247, 249, 0) 55%,
+      rgba(242, 247, 249, 0.7) 100%
     );
 }
 

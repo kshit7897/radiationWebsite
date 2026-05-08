@@ -4,6 +4,7 @@ import { Suspense, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   ContactShadows,
+  Environment,
   PerspectiveCamera,
   Preload,
   Scroll,
@@ -47,9 +48,9 @@ function Atmosphere() {
   const scroll = useScroll();
   const background = useRef<THREE.Color>(null);
   const fog = useRef<THREE.Fog>(null);
-  const base = useMemo(() => new THREE.Color("#f0f3f5"), []);
-  const cool = useMemo(() => new THREE.Color("#e6edef"), []);
-  const calm = useMemo(() => new THREE.Color("#edf2ef"), []);
+  const base = useMemo(() => new THREE.Color("#f2f7f9"), []);
+  const cool = useMemo(() => new THREE.Color("#e6eff2"), []);
+  const calm = useMemo(() => new THREE.Color("#eef4f7"), []);
   const final = useMemo(() => new THREE.Color("#ffffff"), []);
   const working = useMemo(() => new THREE.Color(), []);
 
@@ -72,8 +73,8 @@ function Atmosphere() {
 
   return (
     <>
-      <color ref={background} attach="background" args={["#f0f3f5"]} />
-      <fog ref={fog} attach="fog" args={["#f0f3f5", 9, 24]} />
+      <color ref={background} attach="background" args={["#f2f7f9"]} />
+      <fog ref={fog} attach="fog" args={["#f2f7f9", 9, 24]} />
     </>
   );
 }
@@ -97,11 +98,11 @@ function StoryLights() {
 
   return (
     <>
-      <ambientLight ref={ambient} intensity={1.15} />
-      <directionalLight ref={key} position={[4, 5.5, 6]} intensity={2.6} color="#ffffff" castShadow />
-      <directionalLight ref={fill} position={[-5, -1, 4]} intensity={1.35} color="#c2dfe2" />
-      <directionalLight ref={rim} position={[0, 2.8, -5]} intensity={0.8} color="#b7cec0" />
-      <pointLight position={[0, 0.6, 3]} intensity={0.3} color="#ffffff" />
+      <ambientLight ref={ambient} intensity={0.95} />
+      <directionalLight ref={key} position={[4, 5.5, 6]} intensity={2.4} color="#ffffff" castShadow />
+      <directionalLight ref={fill} position={[-5, -1, 4]} intensity={1.2} color="#cce6eb" />
+      <directionalLight ref={rim} position={[0, 3.5, -6]} intensity={1.5} color="#a1d1d9" />
+      <pointLight position={[0, 0.6, 3]} intensity={0.6} color="#ffffff" />
     </>
   );
 }
@@ -126,22 +127,22 @@ function StageSurface() {
       <mesh position={[0, -1.58, -0.35]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[7.4, 5.2]} />
         <meshStandardMaterial
-          color="#e5eaec"
-          roughness={0.78}
-          metalness={0}
+          color="#e6eff2"
+          roughness={0.8}
+          metalness={0.05}
           transparent
-          opacity={0.82}
+          opacity={0.85}
         />
       </mesh>
 
       <mesh position={[0, -1.575, -0.35]} rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[1.15, 1.17, 120]} />
-        <meshBasicMaterial color="#0f6e7a" transparent opacity={0.22} depthWrite={false} />
+        <meshBasicMaterial color="#0b5c70" transparent opacity={0.25} depthWrite={false} />
       </mesh>
 
       <mesh position={[0, -1.57, -0.35]} rotation={[-Math.PI / 2, 0, 0]}>
         <ringGeometry args={[1.72, 1.735, 140]} />
-        <meshBasicMaterial color="#7fa98b" transparent opacity={0.16} depthWrite={false} />
+        <meshBasicMaterial color="#63a893" transparent opacity={0.2} depthWrite={false} />
       </mesh>
     </group>
   );
@@ -151,6 +152,7 @@ function StoryWorld() {
   return (
     <>
       <Atmosphere />
+      <Environment preset="city" />
       <StoryCamera />
       <StoryLights />
       <StageSurface />
@@ -161,7 +163,7 @@ function StoryWorld() {
       <Arrows />
       <ContactShadows
         position={[0, -1.54, 0]}
-        opacity={0.16}
+        opacity={0.25}
         scale={4.6}
         blur={2.2}
         far={4}
@@ -186,7 +188,7 @@ export default function StoryExperience() {
         toneMapping: THREE.ACESFilmicToneMapping,
         outputColorSpace: THREE.SRGBColorSpace,
       }}
-      style={{ position: "fixed", inset: 0, background: "#f6fbfc" }}
+      style={{ position: "fixed", inset: 0, background: "#f2f7f9" }}
     >
       <Suspense fallback={null}>
         <ScrollControls pages={PAGES} damping={0.18} distance={1}>
